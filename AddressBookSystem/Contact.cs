@@ -4,8 +4,9 @@ using System.Text;
 
 namespace AddressBookSystem
 {
-    public class Contact
+    public class Contact 
     {
+        List <Contact> contacts = new List <Contact>();
         // Creating setter and getter for each property  
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -32,9 +33,37 @@ namespace AddressBookSystem
             this.emailId = emailId;
 
         }
-        public void display()
+        
+        public void AddNewContact()
         {
-            Console.WriteLine(firstName + " " + lastName + " " + address + " " + city + " " + state + " " + zipCode + " " + phoneNumber + " " + emailId);
+            Contact contact = new Contact();
+            Console.Write("Enter First Name: ");
+            contact.firstName = Console.ReadLine();
+            Console.Write("Enter Last Name: ");
+            contact.lastName = Console.ReadLine();
+            Console.Write("Enter Address:");
+            contact.address = Console.ReadLine();
+            Console.Write("Enter City: ");
+            contact.city = Console.ReadLine();
+            Console.Write("Enter State: ");
+            contact.state = Console.ReadLine();
+            Console.Write("Enter ZIP Code: ");
+            contact.zipCode = int.Parse(Console.ReadLine());
+            Console.Write("Enter Phone Number: ");
+            contact.phoneNumber = long.Parse(Console.ReadLine());
+            Console.Write("Enter Email Id: ");
+            contact.emailId = Console.ReadLine();
+
+            contacts.Add(contact);
+            Console.WriteLine("New Contact added successfully");
+        }
+        public void DisplayContact()
+        {
+            Console.WriteLine("\nDisplaying Contacts - \nFirst Name\tLast Name\tAddress\tCity\tState\tZIP Code\tPhone Number\tEmailId");
+            foreach (Contact contact in contacts)
+            {
+                Console.WriteLine(contact.firstName + "\t\t" + contact.lastName + "\t\t" + contact.address + "\t" + contact.city + "\t" + contact.state + "\t" + contact.zipCode + "\t\t" + contact.phoneNumber + "\t\t" + contact.emailId);
+            }
         }
     }
 }
