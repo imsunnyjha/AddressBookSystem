@@ -21,19 +21,7 @@ namespace AddressBookSystem
         {
 
         }
-        public Contact(string firstName, string lastName, string address, string city, string state, int zipCode, long phoneNumber, string emailId)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.zipCode = zipCode;
-            this.phoneNumber = phoneNumber; 
-            this.emailId = emailId;
-
-        }
-        
+        //Function to add new contact
         public void AddNewContact()
         {
             Contact contact = new Contact();
@@ -57,6 +45,7 @@ namespace AddressBookSystem
             contacts.Add(contact);
             Console.WriteLine("New Contact added successfully");
         }
+        //Function to display contact
         public void DisplayContact()
         {
             Console.WriteLine("\nDisplaying Contacts - \nFirst Name\tLast Name\tAddress\tCity\tState\tZIP Code\tPhone Number\tEmailId");
@@ -65,7 +54,7 @@ namespace AddressBookSystem
                 Console.WriteLine(contact.firstName + "\t\t" + contact.lastName + "\t\t" + contact.address + "\t" + contact.city + "\t" + contact.state + "\t" + contact.zipCode + "\t\t" + contact.phoneNumber + "\t\t" + contact.emailId);
             }
         }
-
+        //Function to Edit Contact
         public void EditContact()
         {
             Console.WriteLine("Enter the first name of the person: ");
@@ -75,7 +64,7 @@ namespace AddressBookSystem
                 if (c.firstName.Equals(fName))
                 {
                     int editChoice = 0;
-                    while (editChoice != 9)
+                    while (editChoice < 9)
                     {
                         Console.WriteLine("Enter the following choice");
                         Console.WriteLine("1. Edit First Name");
@@ -149,7 +138,7 @@ namespace AddressBookSystem
                 }
             }
         }
-
+        //Function to Delete Contact 
         public void DeleteContact()
         {
             Console.WriteLine("Enter the first name of the person: ");

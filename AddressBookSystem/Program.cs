@@ -15,6 +15,8 @@ namespace AddressBookSystem
 
             bool flag = true;
             int choice;
+
+            //Menu to display for the user
             while (flag)
             {
                 Console.WriteLine("\n1. Display All Contacts\n2. Add New Contact\n3. Edit Contact\n4. Delete a Contact\n5. Exit");
