@@ -22,7 +22,20 @@ namespace AddressBookSystem
         {
 
         }
-        
+        //Function to add new addressBook
+        public void DisplayAddressBook()
+        {
+            if (contacts.Count == 0)
+                Console.WriteLine("No Contacts to display");
+            else
+            {
+                Console.WriteLine("\nDisplaying Contacts - \nFirst Name\tLast Name\tAddress\tCity\tState\tZIP Code\tPhone Number\tEmailId");
+                foreach (Contact contact in contacts)
+                {
+                    Console.WriteLine(contact.firstName + "\t\t" + contact.lastName + "\t\t" + contact.address + "\t" + contact.city + "\t" + contact.state + "\t" + contact.zipCode + "\t\t" + contact.phoneNumber + "\t\t" + contact.emailId);
+                }
+            }
+        }
         //Function to add new contact
         public void AddNewContact()
         {
