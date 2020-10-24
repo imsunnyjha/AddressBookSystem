@@ -1,0 +1,7 @@
+﻿1 Name :Sunny 
+Address :andheri   ZipCode :400101
+Phone No :7977552211   Email :xyz@gmail.com
+
+2 Name :Bunny
+Address :Borivali   ZipCode :400098
+Phone No :987654321   Email :abcc@gmail.com
