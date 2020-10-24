@@ -6,7 +6,7 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
-        List<Contact> contactList;
+        public List<Contact> contactList;
 
 
         public AddressBook()
@@ -20,9 +20,9 @@ namespace AddressBookSystem
             {
                 Contact contact = new Contact(firstName, lastName, address, city, state, zipCode, phoneNo, emailId);
                 contactList.Add(contact);
-                return "Details Added Successfully!";
+                return "Details Added Successfully";
             }
-            return "Name already exists!";
+            return "Name already exists";
         }
         public void EditContact(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNo, string emailId)
         {
@@ -65,17 +65,16 @@ namespace AddressBookSystem
             }
             return false;
         }
-        public void SearchContactByCityOrState(string cityOrState)
+        public List<Contact> GetPersonByCityOrState(string cityOrState)
         {
-
-            foreach (var contact in contactList)
+            List<Contact> contact = new List<Contact>();
+            foreach (Contact c in contactList)
             {
-                if (contact.city == cityOrState || contact.state == cityOrState)
-                {
-                    Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\nAddress :" + contact.address + "   ZipCode :" + contact.zipCode + "\nPhone No :" + contact.phoneNo + "   emailId :" + contact.emailId);
-                }
-            }
+                if (c.city.Equals(cityOrState) || c.state.Equals(cityOrState))
+                    contact.Add(c);
 
+            }
+            return contact;
         }
     }
 }
