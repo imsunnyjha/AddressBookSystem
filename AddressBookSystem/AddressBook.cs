@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace AddressBookSystem
@@ -7,7 +8,7 @@ namespace AddressBookSystem
     class AddressBook
     {
         public List<Contact> contactList;
-
+        string path = @"C:\Users\lenovo\Desktop\BridgeLabz\AddressBookSystem\AddressBookSystem\contacts.txt";
 
         public AddressBook()
         {
@@ -102,6 +103,38 @@ namespace AddressBookSystem
             {
                 Console.WriteLine(c.ToString());
             }
+        }
+        public void WriteToFile()
+        {
+            if (FileExitsts())
+            {
+                int count = 0;
+                using (StreamWriter sr = File.AppendText(path))
+                {
+
+                    foreach (Contact c in contactList)
+                    {
+                        sr.WriteLine(++count + " " + c.ToString() + "\n");
+
+                    }
+                    sr.Close();
+                }
+            }
+            else
+            {
+                Console.WriteLine("File Does Not Exist");
+            }
+
+        }
+        public void ClearFile()
+        {
+            File.WriteAllText(path, string.Empty);
+        }
+        public bool FileExitsts()
+        {
+            if (File.Exists(path))
+                return true;
+            return false;
         }
     }
 }
