@@ -17,8 +17,9 @@ namespace AddressBookSystem
             Console.WriteLine("Welcome to Address Book Program");
             while (true)
             {
-
+                Console.WriteLine("------------------------------------------------------------------------");
                 Console.WriteLine("1.Add Address Book\n2.Edit Or Add Contact in Address Book\n3.View Persons By City\n4.View Persons By State\n5.Count By City\n6.Count By State\n7.Exit");
+                Console.WriteLine("------------------------------------------------------------------------");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
