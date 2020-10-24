@@ -6,21 +6,35 @@ namespace AddressBookSystem
 {
     class SwitchAddressBook
     {
-        Dictionary<string, Contact> switchaddressbook = new Dictionary<string, Contact>();
-
-        public void AddNewAddressBook(string addressBookName, Contact addressBook)
+        Dictionary<string, AddressBook> addressBooksCollection = new Dictionary<string, AddressBook>();
+        public SwitchAddressBook()
         {
-            switchaddressbook.Add(addressBookName, addressBook);
+            addressBooksCollection = new Dictionary<string, AddressBook>();
         }
-
-        public Contact GetAddressBook(string name)
+        public void AddAddressBook(string name)
         {
-            foreach (var item in switchaddressbook)
+            AddressBook addressBook = new AddressBook();
+            addressBooksCollection.Add(name, addressBook);
+
+        }
+        public AddressBook GetAddressBook(string name)
+        {
+            if (addressBooksCollection.ContainsKey(name))
             {
-                if (item.Key == name)
-                    return item.Value;
+                return addressBooksCollection[name];
             }
             return null;
+        }
+        public void SearchPersonOverMultipleAddressBook(string cityOrState)
+        {
+            Dictionary<string, AddressBook>.Enumerator enumerator = addressBooksCollection.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine("AddressBook Nmae :" + enumerator.Current.Key);
+                Console.WriteLine();
+                enumerator.Current.Value.SearchContactByCityOrState(cityOrState);
+                Console.WriteLine("-------------------------");
+            }
         }
     }
 }
