@@ -7,14 +7,46 @@ namespace AddressBookSystem
 {
     public class Contacts 
     {
-        public string first_name;
-        public string last_name;
-        public string address;
-        public string city;
-        public string state;
-        public int zip;
-        public long phone;
-        public string email;
+        public string first_name
+        {
+            set;
+            get;
+        }
+        public string last_name
+        {
+            set;
+            get;
+        }
+        public string address
+        {
+            set;
+            get;
+        }
+        public string city
+        {
+            set;
+            get;
+        }
+        public string state
+        {
+            set;
+            get;
+        }
+        public int zip
+        {
+            set;
+            get;
+        }
+        public long phone
+        {
+            set;
+            get;
+        }
+        public string email
+        {
+            set;
+            get;
+        }
 
         public Contacts(string first_name, string last_name, string address, string city, string state, int zip, long phone, string email)
         {
