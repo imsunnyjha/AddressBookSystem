@@ -48,5 +48,9 @@ namespace AddressBookSystem
                 }
             }
         }
+        public static void ClearData()
+        {
+            File.WriteAllText(filePathCSV, string.Empty);
+        }
     }
 }
