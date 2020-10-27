@@ -25,8 +25,9 @@ namespace AddressBookSystem
                 Console.WriteLine("5. View Person's Details By State: ");
                 Console.WriteLine("6. Write Address Book into a File: ");
                 Console.WriteLine("7. Read Address Book from a File: ");
-                Console.WriteLine("8. Clear Address Book Details from a File: ");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine("8. Write and Read Address Book(CSV File): "); 
+                Console.WriteLine("9. Clear Address Book Details from a File: ");
+                Console.WriteLine("10. Exit");
 
                 Console.WriteLine("Enter your choice: ");
                 c1 = Convert.ToInt32(Console.ReadLine());
@@ -196,10 +197,26 @@ namespace AddressBookSystem
                         }
                         break;
                     case 8:
+                        Console.WriteLine("Enter the Address Book Name:");
+                        string name = Console.ReadLine();
+                        if (sorted.ContainsKey(name))
+                        {
+                            CsvHandler.WriteIntoCSVFile(sorted, name);
+                            Console.WriteLine("Data inserted successfully");
+                            CsvHandler.ReadFromCSVFile();
+                            Console.WriteLine("Data read successfully");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Book Name Not Found");
+                        }
+                        break;
+                    case 9:
                         File.WriteAllText(filePath, string.Empty);
                         Console.WriteLine("Data cleared successfully!!!");
                         break;
-
+                    case 10:
+                        break;
                 }
 
             }
