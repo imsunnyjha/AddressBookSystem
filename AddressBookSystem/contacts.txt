@@ -1,7 +1,2 @@
-﻿1 Name :Sunny 
-Address :andheri   ZipCode :400101
-Phone No :7977552211   Email :xyz@gmail.com
-
-2 Name :Bunny
-Address :Borivali   ZipCode :400098
-Phone No :987654321   Email :abcc@gmail.com
+Address Book Name: AB1
+First Name: sunny, Last Name: jha, Address: kandi, City: xyz, State: abc, Zip: 400123, Phone Number: 9876543210, Email-id: abc@gmail.com
