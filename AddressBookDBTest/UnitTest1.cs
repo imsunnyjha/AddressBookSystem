@@ -28,5 +28,14 @@ namespace AddressBookDBTest
             Assert.AreEqual(expected.B_Type, actual.B_Type);
 
         }
+        [TestMethod]
+        public void GivenUpdate_ShouldBeUpdateInDatabase()
+        {
+            string expected = "California";
+
+            string actual = AddressBookRepo.UpdateDatabase();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
