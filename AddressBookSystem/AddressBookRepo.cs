@@ -10,6 +10,10 @@ namespace AddressBookSystem
         public static string connectionString = @"Data Source=(LocalDb)\sunnydb;Initial Catalog=AddressBookService;Integrated Security=True";
         //  public SqlConnection connection = new SqlConnection(connectionString);
 
+        /// <summary>
+        /// UC16 to retrieve all contacts
+        /// </summary>
+        /// <returns></returns>
         public static ContactDatabase GetAllContacts()
         {
             try
@@ -57,6 +61,50 @@ namespace AddressBookSystem
                 connection.Close();
             }
         }
-        
+        /// <summary>
+        /// UC17 to retrieve details by city or state
+        /// </summary>
+        /// <returns></returns>
+        public static string UpdateDatabase()
+        {
+            string state = "";
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+                string query = "update contact set State='California' where LOWER(first_name)='rosa';" +
+                                "select* from contact c where LOWER(c.first_name)= 'rosa';";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        state = reader.GetString(4);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Updated rows doesn't exist!");
+                }
+                reader.Close();
+                return state;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return state;
+            }
+            finally
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Close();
+            }
+        }
+
     }
 }
