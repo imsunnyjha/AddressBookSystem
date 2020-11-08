@@ -1,3 +1,4 @@
+using AddressBookSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -7,18 +8,6 @@ using System.Net;
 
 namespace RestSharpTestAddressBook
 {
-    public class AddressBook
-    {
-        public int id { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
-    }
     [TestClass]
     public class AddressBookRestSharpTestCases
     {
@@ -47,8 +36,42 @@ namespace RestSharpTestAddressBook
 
             // assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
-            List<AddressBook> dataResponse = JsonConvert.DeserializeObject<List<AddressBook>>(response.Content);
+            List<ContactDatabase> dataResponse = JsonConvert.DeserializeObject<List<ContactDatabase>>(response.Content);
             Assert.AreEqual(3, dataResponse.Count);
+        }
+        [TestMethod]
+        public void GivenAddressBook_DoPost_ShouldReturnAddedAddressDetails()
+        {
+            // arrange
+            RestRequest request = new RestRequest("/address", Method.POST);
+            JObject objectBody = new JObject
+            {
+                { "FirstName", "Kylie" },
+                { "LastName", "McMiller" },
+                { "Address", "Sidewalk 3/41" },
+                { "City", "Lockenwille" },
+                { "State", "WoodLer" },
+                { "Zip", "521432" },
+                { "PhoneNumber", "7548965265" },
+                { "Email", "kylie@gmail.com" }
+            };
+
+            request.AddParameter("application/json", objectBody, ParameterType.RequestBody);
+
+            // act
+            IRestResponse response = client.Execute(request);
+
+            // assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.Created);
+            ContactDatabase dataResponse = JsonConvert.DeserializeObject<ContactDatabase>(response.Content);
+            Assert.AreEqual("Kylie", dataResponse.firstname);
+            Assert.AreEqual("McMiller", dataResponse.lastname);
+            Assert.AreEqual("Sidewalk 3/41", dataResponse.address);
+            Assert.AreEqual("Lockenwille", dataResponse.city);
+            Assert.AreEqual("WoodLer", dataResponse.state);
+            Assert.AreEqual("521432", dataResponse.zip);
+            Assert.AreEqual("7548965265", dataResponse.phone);
+            Assert.AreEqual("kylie@gmail.com", dataResponse.email);
         }
     }
 }
