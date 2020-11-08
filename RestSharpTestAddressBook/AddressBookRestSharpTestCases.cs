@@ -99,5 +99,17 @@ namespace RestSharpTestAddressBook
             Assert.AreEqual("lyka", dataResponse.firstname);
             Assert.AreEqual("lyka@gmail.com", dataResponse.email);
         }
+        [TestMethod]
+        public void GivenEmployee_OnDelete_ShouldReturnSuccess()
+        {
+            // arrange
+            RestRequest request = new RestRequest("/address/3", Method.DELETE);
+
+            // act
+            IRestResponse response = client.Execute(request);
+
+            // assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+        }
     }
 }
